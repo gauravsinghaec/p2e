@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>P2E-{{pagetitle}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">	
+	<!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<script type="text/javascript" src="{{url_for('static', filename='js/jQuery.js')}}"></script>
+	<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+	<!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+</head>
+<body>
+	<div id="container" >
+	<header id="top" class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 text-left">
+			<h1><a href="/home">P2E</a>	</h1>
+		</div>	
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 text-right">
+			<div class ="row userinfo">
+				<div class="col-lg-12 col-md-12 col-sm-9 col-xs-9 text-center">			
+					{% include "header.html" %}
+				</div>			
+				<div class="col-sm-3 col-xs-3 menu_logo text-center">
+				<a id="menu">
+				<svg viewBox="0 0 44 44">
+			  		<rect x="4" y="12" fill="currentColor" width="32px" height="2"></rect>
+			  		<rect x="4" y="20" fill="currentColor" width="32px" height="2"></rect>
+			  		<rect x="4" y="28" fill="currentColor" width="32px" height="2"></rect>
+				</svg>				
+				</a>
+				</div>
+			</div>			
+		</div>
+	</header>
+	<div class="main">
+    <nav id="drawer" class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="https://www.facebook.com/ruraltodigital/#">About</a></li>
+        <li class="nav__item"><a href="https://www.facebook.com/ruraltodigital/#">News</a></li>
+        <li class="nav__item"><a href="https://www.facebook.com/ruraltodigital/#">Events</a></li>
+        <li class="nav__item"><a href="https://www.facebook.com/ruraltodigital/#">Contact Us</a></li>
+      </ul>
+    </nav>	
+	
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}    
+    {% include "flashmessage.html" %}
+	{% endif %}
+	{% endwith %}	
+	
+	{% block content %}
+	{% endblock %}
+	
+	<div class="row text-center"> Queried {{ trackRefresh }} seconds ago</div>
+	</div>
+	<footer id ="bottom" class="row text-center">
+		<h4><a href="https://www.facebook.com/ruraltodigital/">Follow us on Facebook</a></h4>
+	</footer>	
+	</div>
+	<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

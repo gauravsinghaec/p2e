@@ -1,0 +1,32 @@
+	{% if 'username' not in session and UserLogin == 'login' %}
+	<div class="row profile-pic">
+			<img src="{{ url_for('static', filename='images/profile.png') }}">
+	</div>
+	<div class="row profile-status">
+		<ul>		
+		<li>
+			<a href="{{url_for('showLogin')}}" >{{UserLogin}}</a>
+		|
+			<a href="/{{LogoutSignup}}">{{ LogoutSignup }}</a>
+		</li>				
+		</ul>
+	</div>
+	{% else %}
+	<div class="row profile-pic">
+			{% if 'picture' not in session %}
+			<img src="{{ url_for('static', filename='images/profile.png') }}">
+			{% else %}
+			<img src="{{session['picture']}}">
+			{% endif %}
+	</div>
+	<div class="row profile-status">		
+		<ul>		
+		<li>
+			<a href="{{url_for('landingPage')}}" >{{UserLogin}}</a>
+		|
+			<a href="/{{LogoutSignup}}">{{ LogoutSignup }}</a>
+		</li>
+		</ul>						
+	</div>
+	{% endif %}
+

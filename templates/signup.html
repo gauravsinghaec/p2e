@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row form-result">
+	<div id="result" class="col-md-12 text-center"></div>
+</div>
+<div class="row signup text-center">			
+<form method="POST">	
+<h2>Signup</h2>
+	<table>
+	<!--	
+		<tr>
+			<td style="text-align:right">
+			<label style="font-weight:bold"	>	Name		</label>
+			</td>
+			<td>
+			<label>
+					<input type="text" name="name" value="{{name}}" required>
+			</label>
+			</td>
+			<td style="color:red">{{ nameerror }} 
+			</td>			
+		</tr>
+		<tr>
+			<td style="text-align:right" >
+			<label style="font-weight:bold"> City 	</label>
+			</td>
+			<td>
+			<label>
+				<input type="text" name="city" value="{{city}}" required>
+			</label>
+			</td>
+			<td style="color:red">{{ cityerror }}
+			</td>			
+		</tr>
+	-->
+		<tr>
+			<td style="text-align:right">
+			<label >	Username		</label>
+			</td>
+			<td>
+				<input type="text" name="username" id="username" value="{{uname}}" required>
+			</td>
+		</tr>
+
+		<tr><td></td><td style="color:red">{{ unameerror }} </td></tr>	
+		<tr>
+			<td style="text-align:right" >
+			<label> Password 	</label>
+			</td>
+			<td>
+				<input type="password" name="password" id="password" value="{{pw}}" required>
+			</td>
+		</tr>
+		<tr><td></td><td style="color:red">{{ pwerror }} </td></tr>	
+		<tr>
+			<td style="text-align:right">
+			<label> Confirm Password 	</label>
+			</td>
+			<td>
+				<input type="password" name="verify" id="verify" value="{{vpw}}" required>
+			</td>
+		</tr>
+		<tr><td></td><td style="color:red">{{ vpwerror }} </td></tr>	
+		<tr>
+			<td style="text-align:right">
+			<label> Email (optional) 	</label>
+			</td>
+			<td>
+				<input type="email" name="email" id="email" value="{{email}}">
+			</td>
+		</tr>
+		<tr><td></td><td style="color:red">{{ emailerror }} </td></tr>	
+	</table>
+	<br>
+	<input type="submit" name="submit" id="submit" value="Submit">
+</form>
+</div>
+<!-- <script>
+function signUpCallback(evt){
+	if (evt){
+		evt.preventDefault();
+		// $('#signinButton').attr("style","display:none");
+		$('.signup').attr("style","display:none");
+		$.ajax({
+			url: '/signup',			
+			type: 'POST',
+			// method: "POST",
+			data: JSON.stringify({username: $('#username')[0].value, email: $('#email')[0].value
+				,password:$('#password')[0].value, verify:$('#verify')[0].value}),
+			// processData: false,
+			contentType: 'application/json;  charset=utf-8'	,		
+			// data: authResult['code'],
+			success: function(result){
+				if (result){
+					console.log(result);
+					$('#result').html('Signup Successfull! <br>'+ result+ '<br>Redirecting to login');
+					setTimeout(function(){
+						window.location.href="/login";
+					},4000);
+				}else
+				{
+					$('#result').html('Failed to make server side call.\
+						Check your configuration and console.');
+				}
+			},
+			error: function(){
+				window.location.href="/signup";
+			}
+		});
+	} else{
+
+	}	
+}
+$('#submit').click(signUpCallback);
+</script> -->
+{% endblock %}
