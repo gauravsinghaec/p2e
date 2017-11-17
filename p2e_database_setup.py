@@ -9,8 +9,8 @@ from urllib import parse
 
 PG_URL = parse.urlparse(os.environ["DATABASE_URL"])
 
-# PG_DATABASE = PG_URL.path[1:]
-PG_DATABASE = 'p2e';
+PG_DATABASE = PG_URL.path[1:]
+# PG_DATABASE = 'p2e';
 PG_USER = PG_URL.username
 PG_PASSWD = PG_URL.password
 PG_HOST = PG_URL.hostname
