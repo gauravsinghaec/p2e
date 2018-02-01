@@ -53,9 +53,9 @@
 		function signInCallback(authResult){
 			if (authResult['code']){
 				// $('#signinButton').attr("style","display:none");
-				console.log('One time code from authResult: ');
-				console.log(authResult['code']);
-				console.log(authResult['status']);
+				// console.log('One time code from authResult: ');
+				// console.log(authResult['code']);
+				// console.log(authResult['status']);
 				$('.login').attr("style","display:none");
 				$.ajax({
 					type: 'POST',
@@ -78,7 +78,7 @@
 				});
 			}else if(authResult['error']){
 				console.log('There was an error: '+ authResult['error']);			
-				console.log(authResult);
+				// console.log(authResult);
 			}	
 		}
 	</script>
@@ -107,7 +107,7 @@
 	 // successful.  See statusChangeCallback() for when this call is made.
 	 function sendTokenToServer() {
 	   var access_token = FB.getAuthResponse()['accessToken'];
-	   console.log(access_token)
+	   // console.log(access_token)
 	   console.log('Welcome!  Fetching your information.... ');
 	   FB.api('/me', function(response) {
 	     	console.log('Successful login for: ' + response.name);
