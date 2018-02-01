@@ -22,7 +22,6 @@ $.ajax({
       'Content-Type': 'application/json',
   	}
 	}).done(function(response) {
-		console.log(response['Places']);
 	var intialLocationsFromServer = response['Places'];
 // var intialLocationsFromServer =  [
 // 	{
