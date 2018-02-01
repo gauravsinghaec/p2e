@@ -121,7 +121,7 @@ def logout(response):
     response.set_cookie('user_id=; Path=/')
 
 #***********************************************************
-# webapp2.RequestHandler.initialize gets called for every GET
+# initialize is being called for every GET
 # Request and self.user will have the user object handy
 #***********************************************************
 
