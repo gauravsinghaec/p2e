@@ -2,7 +2,7 @@ from flask import Flask,render_template,url_for,request,redirect,flash,jsonify
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from p2e_database_setup import Base,UserProfile,UserAccount
+from p2e_database_setup import Base,UserProfile,UserAccount,Location
 
 # New imports for the login implementation
 from flask import session as login_session
@@ -522,6 +522,24 @@ def gdisconnect():
         return response
 
 # Making an API endpoint for Restaurant List(GET Request)
+@app.route('/location.json')
+def locationJSON():
+    locations = session.query(Location).all()
+    listLocations=[]
+    j=0
+    for i in locations:
+        if i.serializeLocations !=[]:
+            listLocations.append(i.serializeLocations)
+        j=j+1
+    response = jsonify(Places=listLocations)
+    # logging.error(res)    
+    # response = make_response(json.dumps('Current user not connected.'), 401)
+    # response.headers['Content-Type'] = 'application/json'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    logging.error(response.headers)    
+    return response    
+
+# Making an API endpoint for Restaurant List(GET Request)
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
 	restaurants = session.query(Restaurant).all()
@@ -551,6 +569,12 @@ def restaurantMenuJSON(restaurant_id):
 def menuItemJSON(restaurant_id,menu_id):
 	menuItem = session.query(MenuItem).filter_by(id=menu_id,restaurant_id=restaurant_id).one()
 	return jsonify(MenuItem=menuItem.serialize)
+
+
+@app.route('/map')
+def locationMap():
+    return render_template('map.html')
+
 
 # Task 1: Create route for Restaurant function here
 @app.route('/')

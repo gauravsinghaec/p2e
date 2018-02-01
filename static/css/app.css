@@ -1,0 +1,79 @@
+#placelistview {
+  margin: 0px;
+  width: 230px;
+  height: 100vh;
+  background-color: black; }
+
+#places-list {
+  font-size: 1.2em;
+  margin: 0px;
+  padding-left: 0px; }
+
+#places-list li {
+  list-style: none;
+  padding-right: 0.1em; }
+
+#map {
+  margin-right: 0.5em;
+  margin-top: 1em;
+  bottom: 0px;
+  top: 3.4em;
+  height: 100%;
+  left: 232px;
+  position: absolute;
+  right: 0px; }
+
+#filter-button, #filter-text {
+  margin: 0px; }
+
+button {
+  color: #cccccc;
+  background-color: black;
+  outline: none;
+  border: none; }
+
+.menu_logo {
+  display: none; }
+
+header {
+  color: white;
+  background-color: #484848;
+  height: 50px; }
+
+h2 {
+  padding: 0.2em; }
+
+@media screen and (max-width: 550px) {
+  .listview {
+    z-index: 10;
+    width: 230px;
+    position: absolute;
+    background-color: black;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-240px, 0);
+    transform: translate(-240px, 0);
+    /* Optionally, we animate the drawer. */
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease; }
+  .listview.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5); }
+  #map {
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    margin: 8px; }
+  .menu_logo {
+    display: unset;
+    position: absolute;
+    top: 20px;
+    right: 8px;
+    width: 32px; }
+  /*.menu_logo a{ width: 32px }*/ }

@@ -70,6 +70,21 @@ class GoogleAccount(Base):
     user_profile_id = Column(Integer,ForeignKey('user_profile.id'), primary_key=True)
     google_id = Column(String(50))
 
+class Location(Base):
+    __tablename__ = 'locations'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String(150), nullable=False)
+    lattitude = Column(String(10), nullable=False)
+    longitude = Column(String(10), nullable=False)
+
+    @property
+    def serializeLocations(self):
+        #returns object data in serialized format
+        return {
+            "title": self.title,
+            "location" :{"lat": self.lattitude,"lng":self.longitude},
+        }
 
 
 engine = create_engine(PG_CONN)
