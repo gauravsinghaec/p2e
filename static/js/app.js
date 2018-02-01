@@ -14,7 +14,7 @@ $.getJSON(locationURL , function( data ) {
 });    
 */
 
-var locationURL = 'http://localhost:8000/location.json';
+var locationURL = 'https://p2e.herokuapp.com/location.json';
 $.ajax({
 	type: "GET",
 	url: locationURL,
