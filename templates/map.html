@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neighborhood Map-Udacity Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/app.css')}}">
+</head>
+<body>
+    <div class="main">
+    <header>
+        <h2>Tourist Places in Rajasthan</h2>
+            <div class="menu_logo">
+                <a id="menu" data-bind="click: showMenuIcon">
+                <svg viewBox="0 0 44 44">
+                    <rect x="4" y="12" fill="currentColor" width="32px" height="2"></rect>
+                    <rect x="4" y="20" fill="currentColor" width="32px" height="2"></rect>
+                    <rect x="4" y="28" fill="currentColor" width="32px" height="2"></rect>
+                </svg>              
+                </a>        
+            </div>    
+    </header>
+    <div id="placelistview" class="listview" data-bind="css: {open: setMenuIcon}">
+        <div id="filter">
+            <input id="filter-text" data-bind="event: {keyup: filterLocationList}, textInput: filterInputText" type="text" placeholder="Station Location">
+            <input id="filter-button" type="button" value="Filter">
+        </div>
+        <ul id="places-list" data-bind="foreach: locationList">
+            <li><button data-bind="click: $parent.selectThisLocation, text: $data.title"></button></li>
+        </ul>      
+    </div>
+    <div id="map"></div>
+    <div id="map-error"></div>
+
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename='js/lib/jQuery.js')}}"></script>        
+    <script type="text/javascript" src="{{url_for('static', filename='js/lib/knockout-3.2.0.js')}}"></script>            
+    <script type="text/javascript">    
+        var map, largeInfowindow;        
+        function initMap(){
+            // Constructor creates a new map - only center and zoom are required.
+            map = new google.maps.Map(document.getElementById('map'),
+            {
+                center: {lat: 26.996471, lng: 75.876472},
+                zoom: 10
+            });
+            largeInfowindow = new google.maps.InfoWindow();
+        
+            //To Activate Knockout through app.js
+            // ko.applyBindings(new ViewModel());
+        }
+        function googleError(){
+            document.getElementById('map-error').textContent = 'Error in Map!';
+        }            
+    </script>    
+    <script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>        
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtsirN68OAeo4fv8o0iEOZ5dJlEAHLUxA&callback=initMap" onerror="googleError()">
+    </script>     
+</body>
+</html>
