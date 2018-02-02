@@ -1,20 +1,7 @@
 // These are the neighborhood locations that will be shown to the user.
 // Normally we'd have these in a database instead.
 
-/*
-$.getJSON(locationURL , function( data ) {
-		console.log(data);
-	}).done(function() {
-    	console.log( "second success" );
-    }).fail(function() {
-    	// $nytHeaderElem.text("Restaurant Data Could Not Be Loaded");
-    	console.log( "error" );
-    }).always(function() {
-    	console.log( "complete" );
-});    
-*/
-
-var locationURL = 'https://p2e.herokuapp.com/location.json';
+var locationURL = '/location.json';
 $.ajax({
 	type: "GET",
 	url: locationURL,
@@ -178,7 +165,10 @@ var ViewModel = function(){
 		
 		var wikilink ;           
 		var wikilinkdata;                  
-		var wikiElemItem ='';
+		var wikiElemItem =
+		'<div class="infowindow"><h4>' + marker.title + '</h4>\
+		<h5>Relevant Wikipedia Links</h5>\
+		<ul>';
 		
 		//AJAX call to retrieve data from Wikipedia   
 		$.ajax({
@@ -191,7 +181,8 @@ var ViewModel = function(){
 				wikilink  = 'http://en.wikipedia.org/wiki/'+ wikilinkdata ;
 				wikiElemItem += '<li><a target ="_blank" href="'+wikilink+ '">' +wikilinkdata+ '</a>'+'</li>';
 			}
-			infowindow.setContent('<h5>' + 'Relevant Wikipedia Links' + '</h5>' + wikiElemItem);
+			wikiElemItem +='</ul></div>'
+			infowindow.setContent(wikiElemItem);
 		}).fail(function() {
 			infowindow.setContent('<div>' + marker.title + '</div>' +
 			'<div>No Wiki Link Found</div>');
@@ -238,9 +229,9 @@ var ViewModel = function(){
 	}
 	// Extend the boundaries of the map for each marker
 	map.fitBounds(bounds);
-};
+	};
 
-ko.applyBindings(new ViewModel());
+	ko.applyBindings(new ViewModel());
 
 }).fail(function(response) {
 		console.log(response)
