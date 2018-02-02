@@ -73,45 +73,8 @@
 		<tr><td></td><td style="color:red">{{ emailerror }} </td></tr>	
 	</table>
 	<br>
-	<input type="submit" name="submit" id="submit" value="Submit">
+	<button type="submit" name="submit" id="submit">Submit</button> 
+	<button><a href="{{url_for('landingPage')}}">Cancel</a></button>
 </form>
 </div>
-<!-- <script>
-function signUpCallback(evt){
-	if (evt){
-		evt.preventDefault();
-		// $('#signinButton').attr("style","display:none");
-		$('.signup').attr("style","display:none");
-		$.ajax({
-			url: '/signup',			
-			type: 'POST',
-			// method: "POST",
-			data: JSON.stringify({username: $('#username')[0].value, email: $('#email')[0].value
-				,password:$('#password')[0].value, verify:$('#verify')[0].value}),
-			// processData: false,
-			contentType: 'application/json;  charset=utf-8'	,		
-			// data: authResult['code'],
-			success: function(result){
-				if (result){
-					console.log(result);
-					$('#result').html('Signup Successfull! <br>'+ result+ '<br>Redirecting to login');
-					setTimeout(function(){
-						window.location.href="/login";
-					},4000);
-				}else
-				{
-					$('#result').html('Failed to make server side call.\
-						Check your configuration and console.');
-				}
-			},
-			error: function(){
-				window.location.href="/signup";
-			}
-		});
-	} else{
-
-	}	
-}
-$('#submit').click(signUpCallback);
-</script> -->
 {% endblock %}
