@@ -13,7 +13,7 @@ loadLocationData.py
 # *.exe
 # *.o
 # *.so
-*.whl
+# *.whl
 *.env
 
 # Packages #
