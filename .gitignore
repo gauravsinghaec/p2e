@@ -33,7 +33,6 @@ loadLocationData.py
 node_modules
 env
 tests
-__pycache__
 
 # Logs and databases #
 ######################
